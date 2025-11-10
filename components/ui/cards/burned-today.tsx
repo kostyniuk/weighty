@@ -13,7 +13,8 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { ChartConfig, ChartContainer } from "@/components/ui/chart"
+// import { ChartConfig, ChartContainer } from "@/components/ui/chart"
+import { Input } from "@/components/ui/input"
 
 // const data = [
 //     {
@@ -68,14 +69,19 @@ export function CardsActivityGoal() {
     const [goal, setGoal] = React.useState(350)
 
     function onClick(adjustment: number) {
-        setGoal(Math.max(0, Math.min(2000, goal + adjustment)))
+        setGoal(Math.max(0, Math.min(9999, goal + adjustment)))
+    }
+
+    function onChange(value: number) {
+        console.log("onChange", value)
+        setGoal(value)
     }
 
     return (
-        <Card className="h-full gap-5 w-60">
+        <Card className="h-full gap-5 w-60 h-60">
             <CardHeader>
                 <CardTitle>Burned today</CardTitle>
-                <CardDescription>Today you have burned {goal} kcal.</CardDescription>
+                <CardDescription>Today you burned {goal} kcal.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 flex-col">
                 <div className="flex items-center justify-center gap-4">
@@ -89,9 +95,9 @@ export function CardsActivityGoal() {
                         <MinusIcon />
                         <span className="sr-only">Decrease</span>
                     </Button>
-                    <div className="text-center">
+                    <div className="text-center flex-2">
                         <div className="text-4xl font-bold tracking-tighter tabular-nums">
-                            {goal}
+                            <Input value={goal} onChange={(e) => onChange(Number(e.target.value))} variant="borderless" maxLength={4} inputMode="numeric" pattern="[0-9]*" min={0} max={9999} />
                         </div>
                         <div className="text-muted-foreground text-xs uppercase">
                             kcal
@@ -102,7 +108,7 @@ export function CardsActivityGoal() {
                         size="icon"
                         className="size-7 rounded-full"
                         onClick={() => onClick(10)}
-                        disabled={goal >= 2000}
+                        disabled={goal >= 9999}
                     >
                         <PlusIcon />
                         <span className="sr-only">Increase</span>
