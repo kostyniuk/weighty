@@ -16,6 +16,7 @@ import {
 // import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
+import { NumericInput } from "../custom/numeric-input"
 
 
 export function CardsActivityToday() {
@@ -75,8 +76,7 @@ export function CardsActivityToday() {
                     onValueChange={(value) => onChange(value[0])}
                 />
                 <div className="text-4xl font-bold tracking-tighter tabular-nums">
-                    <Input
-                        type="number"
+                    <NumericInput
                         value={inputValue}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
