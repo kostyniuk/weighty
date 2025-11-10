@@ -65,7 +65,7 @@ import { Input } from "@/components/ui/input"
 //     },
 // } satisfies ChartConfig
 
-export function CardsActivityGoal() {
+export function CardsBurnedToday() {
     const [goal, setGoal] = React.useState(350)
 
     function onClick(adjustment: number) {
