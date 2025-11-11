@@ -55,7 +55,7 @@ export function CardsActivityToday() {
         if (isNaN(numValue) || inputValue === '' || inputValue === '.') {
             setInputValue(distance.toString());
         } else {
-            const clampedValue = Math.max(0, Math.min(50, numValue));
+            const clampedValue = Math.max(0, Math.min(100, numValue));
             setDistance(clampedValue);
             setInputValue(clampedValue.toString());
         }
