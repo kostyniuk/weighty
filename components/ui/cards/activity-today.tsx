@@ -65,33 +65,44 @@ export function CardsActivityToday() {
         <Card className="h-full gap-5 w-120 h-60">
             <CardHeader>
                 <CardTitle>Distance today</CardTitle>
-                <CardDescription>Today you walked {distance} km.</CardDescription>
+                <CardDescription>Today you covered {distance} km.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-1 flex-row items-center justify-center gap-4">
-                <Slider
-                    value={[distance]}
-                    max={50}
-                    step={0.1}
-                    className="w-[80%]"
-                    onValueChange={(value) => onChange(value[0])}
-                />
-                <div className="text-4xl font-bold tracking-tighter tabular-nums">
-                    <NumericInput
-                        value={inputValue}
-                        onChange={handleInputChange}
-                        onBlur={handleInputBlur}
-                        variant="borderless"
+            <CardContent className="flex flex-col">
+                <div className="flex flex-row items-center justify-center gap-4">
+                    <Slider
+                        value={[distance]}
+                        max={20}
                         step={0.1}
-                        min={0}
-                        max={50}
+                        onValueChange={(value) => onChange(value[0])}
                     />
+                    <div className="flex flex-row items-center gap-1">
+                        <div className="text-4xl font-bold tracking-tighter tabular-nums">
+                            <NumericInput
+                                value={inputValue}
+                                onChange={handleInputChange}
+                                onBlur={handleInputBlur}
+                                variant="borderless"
+                                step={0.1}
+                                min={0}
+                                max={50}
+                                className="px-0 w-24"
+                            />
+                        </div>
+                        <div className="text-muted-foreground text-xs uppercase">
+                            km
+                        </div>
+                    </div>
                 </div>
-                <div className="text-muted-foreground text-xs uppercase">
-                    km
-                </div>
+                <CardDescription className="flex flex-row items-center gap-1">
+                    That's about
+                    <div className="text-lg font-bold tracking-tighter text-primary">
+                        {Math.round(distance * 50)}
+                    </div>
+                    kcal burned 🎉
+                </CardDescription>
             </CardContent>
             <CardFooter>
-                <Button className="w-full" variant="default">
+                <Button variant="default">
                     Submit
                 </Button>
             </CardFooter>
