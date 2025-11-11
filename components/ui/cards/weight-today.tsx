@@ -76,13 +76,19 @@ export function CardsWeightToday() {
                         <span className="sr-only">Increase</span>
                     </Button>
                 </div>
-                <div className="flex gap-2 flex-wrap w-[80%] mt-4 [&_button]:w-5">
-                    <Button variant="outline" onClick={() => onClick(1)}>+1</Button>
-                    <Button variant="outline" onClick={() => onClick(5)}>+5</Button>
-                    <Button variant="outline" onClick={() => onClick(10)}>+10</Button>
-                    <Button variant="outline" onClick={() => onClick(-1)}>-1</Button>
-                    <Button variant="outline" onClick={() => onClick(-5)}>-5</Button>
-                    <Button variant="outline" onClick={() => onClick(-10)}>-10</Button>
+                <div className="flex flex-wrap gap-2 mt-4 [&_button]:w-5 [&_svg]:size-4 [&_div]:flex [&_div]:items-center [&_div]:gap-2">
+                    <div>
+                        <PlusIcon />
+                        <Button variant="outline" onClick={() => onClick(1)}>+1</Button>
+                        <Button variant="outline" onClick={() => onClick(5)}>+5</Button>
+                        <Button variant="outline" onClick={() => onClick(10)}>+10</Button>
+                    </div>
+                    <div>
+                        <MinusIcon />
+                        <Button variant="outline" onClick={() => onClick(-1)}>-1</Button>
+                        <Button variant="outline" onClick={() => onClick(-5)}>-5</Button>
+                        <Button variant="outline" onClick={() => onClick(-10)}>-10</Button>
+                    </div>
                 </div>
             </CardContent>
             <CardFooter>
