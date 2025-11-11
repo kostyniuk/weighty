@@ -43,7 +43,7 @@ export function CardsWeightToday() {
         <Card className="h-full gap-5 w-60 h-80">
             <CardHeader>
                 <CardTitle>Your weight today</CardTitle>
-                <CardDescription>Today your weight is {weight.toFixed(1)} kg.</CardDescription>
+                <CardDescription>Your weight is {weight.toFixed(2)} kg.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 flex-col">
                 <div className="flex items-center justify-center gap-4">
@@ -59,7 +59,7 @@ export function CardsWeightToday() {
                     </Button>
                     <div className="text-center flex-2">
                         <div className="text-4xl font-bold tracking-tighter tabular-nums">
-                            <p>{weight.toFixed(1)}</p>
+                            <p>{weight.toFixed(2)}</p>
                         </div>
                         <div className="text-muted-foreground text-xs uppercase">
                             kg
@@ -76,18 +76,18 @@ export function CardsWeightToday() {
                         <span className="sr-only">Increase</span>
                     </Button>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4 [&_button]:w-5 [&_svg]:size-4 [&_div]:flex [&_div]:items-center [&_div]:gap-2">
+                <div className="flex flex-wrap gap-2 mt-4 [&_button]:w-10 [&_svg]:size-4 [&_div]:flex [&_div]:items-center [&_div]:gap-2">
                     <div>
                         <PlusIcon />
-                        <Button variant="outline" onClick={() => onClick(1)}>+1</Button>
-                        <Button variant="outline" onClick={() => onClick(5)}>+5</Button>
-                        <Button variant="outline" onClick={() => onClick(10)}>+10</Button>
+                        <Button variant="outline" onClick={() => onClick(0.05)}>.05</Button>
+                        <Button variant="outline" onClick={() => onClick(1)}>1</Button>
+                        <Button variant="outline" onClick={() => onClick(5)}>5</Button>
                     </div>
                     <div>
                         <MinusIcon />
-                        <Button variant="outline" onClick={() => onClick(-1)}>-1</Button>
-                        <Button variant="outline" onClick={() => onClick(-5)}>-5</Button>
-                        <Button variant="outline" onClick={() => onClick(-10)}>-10</Button>
+                        <Button variant="outline" onClick={() => onClick(0.05)}>.05</Button>
+                        <Button variant="outline" onClick={() => onClick(-1)}>1</Button>
+                        <Button variant="outline" onClick={() => onClick(-5)}>5</Button>
                     </div>
                 </div>
             </CardContent>

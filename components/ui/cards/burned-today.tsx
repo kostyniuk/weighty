@@ -81,7 +81,7 @@ export function CardsBurnedToday() {
         <Card className="h-full gap-5 w-60 h-60">
             <CardHeader>
                 <CardTitle>Burned today</CardTitle>
-                <CardDescription>Today you burned {goal} kcal.</CardDescription>
+                <CardDescription>You burned {goal} kcal today.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 flex-col">
                 <div className="flex items-center justify-center gap-4">

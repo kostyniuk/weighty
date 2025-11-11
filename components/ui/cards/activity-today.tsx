@@ -62,10 +62,10 @@ export function CardsActivityToday() {
     }
 
     return (
-        <Card className="h-full gap-5 w-120 h-60">
+        <Card className="h-full gap-5 w-90 h-60">
             <CardHeader>
                 <CardTitle>Distance today</CardTitle>
-                <CardDescription>Today you covered {distance} km.</CardDescription>
+                <CardDescription>You covered {distance} km today.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col">
                 <div className="flex flex-row items-center justify-center gap-4">
