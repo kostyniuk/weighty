@@ -84,7 +84,7 @@ export function CardsActivityToday() {
                                 variant="borderless"
                                 step={0.1}
                                 min={0}
-                                max={50}
+                                max={100}
                                 className="px-0 w-24"
                             />
                         </div>
