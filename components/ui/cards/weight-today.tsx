@@ -13,9 +13,11 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { ButtonGroup } from "../button-group"
 
 export function CardsWeightToday() {
     const [weight, setWeight] = React.useState(70)
+    const [currentControl, setCurrentControl] = React.useState<"plus" | "minus" | null>("plus")
 
     const step = 0.1
     const min = 10
@@ -76,18 +78,24 @@ export function CardsWeightToday() {
                         <span className="sr-only">Increase</span>
                     </Button>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4 [&_button]:w-10 [&_svg]:size-4 [&_div]:flex [&_div]:items-center [&_div]:gap-2">
-                    <div>
-                        <PlusIcon />
-                        <Button variant="outline" onClick={() => onClick(0.05)}>.05</Button>
-                        <Button variant="outline" onClick={() => onClick(1)}>1</Button>
-                        <Button variant="outline" onClick={() => onClick(5)}>5</Button>
-                    </div>
-                    <div>
-                        <MinusIcon />
-                        <Button variant="outline" onClick={() => onClick(0.05)}>.05</Button>
-                        <Button variant="outline" onClick={() => onClick(-1)}>1</Button>
-                        <Button variant="outline" onClick={() => onClick(-5)}>5</Button>
+                <div className="flex gap-4 items-center mt-2 [&_button]:w-10">
+                    <ButtonGroup orientation="vertical" aria-label="Media controls" className="">
+                        <Button variant={currentControl === "plus" ? "control" : "outline"} size="icon" onClick={() => setCurrentControl("plus")}>
+                            <PlusIcon />
+                        </Button>
+                        <Button variant={currentControl === "minus" ? "control" : "outline"} size="icon" onClick={() => setCurrentControl("minus")}>
+                            <MinusIcon />
+                        </Button>
+                    </ButtonGroup>
+                    <div className="flex flex-col gap-2 [&_div]:flex [&_div]:gap-2">
+                        <div>
+                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 0.05 : -0.05)}>.05</Button>
+                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 1 : -1)}>1</Button>
+                        </div>
+                        <div>
+                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 5 : -5)}>5</Button>
+                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 10 : -10)}>10</Button>
+                        </div>
                     </div>
                 </div>
             </CardContent>
@@ -96,7 +104,7 @@ export function CardsWeightToday() {
                     Submit
                 </Button>
             </CardFooter>
-        </Card>
+        </Card >
     )
 }
 
