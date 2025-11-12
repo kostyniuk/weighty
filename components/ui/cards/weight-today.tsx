@@ -78,7 +78,7 @@ export function CardsWeightToday() {
                         <span className="sr-only">Increase</span>
                     </Button>
                 </div>
-                <div className="flex gap-4 items-center mt-2 [&_button]:w-10">
+                <div className="flex gap-4 items-center mt-2">
                     <ButtonGroup orientation="vertical" aria-label="Media controls" className="">
                         <Button variant={currentControl === "plus" ? "control" : "outline"} size="icon" onClick={() => setCurrentControl("plus")}>
                             <PlusIcon />
@@ -89,12 +89,12 @@ export function CardsWeightToday() {
                     </ButtonGroup>
                     <div className="flex flex-col gap-2 [&_div]:flex [&_div]:gap-2">
                         <div>
-                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 0.05 : -0.05)}>.05</Button>
-                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 1 : -1)}>1</Button>
+                            <Button variant="outline" size="icon" onClick={() => onClick(currentControl === "plus" ? 0.05 : -0.05)}>.05</Button>
+                            <Button variant="outline" size="icon" onClick={() => onClick(currentControl === "plus" ? 1 : -1)}>1</Button>
                         </div>
                         <div>
-                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 5 : -5)}>5</Button>
-                            <Button variant="outline" onClick={() => onClick(currentControl === "plus" ? 10 : -10)}>10</Button>
+                            <Button variant="outline" size="icon" onClick={() => onClick(currentControl === "plus" ? 5 : -5)}>5</Button>
+                            <Button variant="outline" size="icon" onClick={() => onClick(currentControl === "plus" ? 10 : -10)}>10</Button>
                         </div>
                     </div>
                 </div>
