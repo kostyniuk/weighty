@@ -2,6 +2,7 @@ import { CardsBurnedToday } from "@/components/ui/cards/burned-today";
 import { CardsActivityToday } from "@/components/ui/cards/activity-today";
 import { CardsWeightToday } from "@/components/ui/cards/weight-today";
 import { CardsProgress } from "@/components/ui/cards/progress";
+import { CardsTotalKcalToday } from "@/components/ui/cards/total-kcal-today";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <CardsBurnedToday />
         <CardsActivityToday />
         <CardsWeightToday />
+        <CardsTotalKcalToday />
       </div>
       <div className="w-[50%]">
         <CardsProgress />
