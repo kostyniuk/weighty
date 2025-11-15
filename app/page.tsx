@@ -5,6 +5,8 @@ import { CardsProgress } from "@/components/ui/cards/progress";
 import { CardsTotalKcalToday } from "@/components/ui/cards/total-kcal-today";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
+import { fetchDistanceHistory, fetchUsers, fetchWeightHistory } from "./lib/data";
+import { fetchBurnedHistory } from "./lib/data";
 
 
 export default async function Home() {
@@ -12,13 +14,22 @@ export default async function Home() {
   const result = await db.get("select 1");
   console.log("result", result);
 
-  const usersResult = await db.select().from(users);
-  console.log("users", usersResult);
 
+  const usersResult = await fetchUsers();
+  const [weightHistoryResult, burnedHistoryResult, distanceHistoryResult] = await Promise.all([
+    fetchWeightHistory(),
+    fetchBurnedHistory(),
+    fetchDistanceHistory(),
+  ]);
+
+  console.log("weightHistoryResult", weightHistoryResult);
+  console.log("burnedHistoryResult", burnedHistoryResult);
+  console.log("distanceHistoryResult", distanceHistoryResult);
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black gap-4">
       <div className="flex flex-row gap-4">
+        Hi {usersResult[0]?.name}
         <CardsBurnedToday />
         <CardsActivityToday />
         <CardsWeightToday />
