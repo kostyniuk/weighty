@@ -4,12 +4,17 @@ import { CardsWeightToday } from "@/components/ui/cards/weight-today";
 import { CardsProgress } from "@/components/ui/cards/progress";
 import { CardsTotalKcalToday } from "@/components/ui/cards/total-kcal-today";
 import { db } from "@/lib/db";
+import { users } from "@/lib/schema";
 
 
 export default async function Home() {
 
   const result = await db.get("select 1");
   console.log("result", result);
+
+  const usersResult = await db.select().from(users);
+  console.log("users", usersResult);
+
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black gap-4">
