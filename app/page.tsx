@@ -11,10 +11,6 @@ import { fetchBurnedHistory } from "./lib/data";
 
 export default async function Home() {
 
-  const result = await db.get("select 1");
-  console.log("result", result);
-
-
   const usersResult = await fetchUsers();
   const [weightHistoryResult, burnedHistoryResult, distanceHistoryResult] = await Promise.all([
     fetchWeightHistory(),
