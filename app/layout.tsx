@@ -35,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex justify-end bg-zinc-50 dark:bg-black">
+          <div className="flex justify-end bg-zinc-50/50 dark:bg-zinc-950">
             <ThemeToggle />
           </div>
           {children}
