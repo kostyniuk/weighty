@@ -23,16 +23,36 @@ export default async function Home() {
   console.log("distanceHistoryResult", distanceHistoryResult);
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black gap-4">
-      <div className="flex flex-row gap-4">
-        Hi {usersResult[0]?.name}
-        <CardsBurnedToday />
-        <CardsActivityToday />
-        <CardsWeightToday />
-        <CardsTotalKcalToday />
-      </div>
-      <div className="w-[50%]">
-        <CardsProgress />
+    <div className="min-h-screen bg-zinc-50/50 dark:bg-zinc-950 p-6 md:p-10">
+      <div className="mx-auto max-w-7xl space-y-8">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Hi, {usersResult[0]?.name} 👋
+          </h1>
+          <p className="text-zinc-500 dark:text-zinc-400">
+            Here is your daily activity summary.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <CardsBurnedToday />
+          <CardsActivityToday />
+          <CardsWeightToday />
+          <CardsTotalKcalToday />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <CardsProgress />
+          </div>
+          {/* Placeholder for future widgets or another chart */}
+          <div className="rounded-xl border bg-card text-card-foreground shadow-sm p-6 flex flex-col items-center justify-center min-h-[300px] lg:col-span-1 gap-2">
+            <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+              <span className="text-2xl">✨</span>
+            </div>
+            <p className="text-muted-foreground font-medium">More insights coming soon</p>
+          </div>
+        </div>
       </div>
     </div>
   );

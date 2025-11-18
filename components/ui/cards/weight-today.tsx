@@ -42,12 +42,12 @@ export function CardsWeightToday() {
     }
 
     return (
-        <Card className="h-full gap-5 w-60 h-80">
+        <Card className="h-full gap-5">
             <CardHeader>
                 <CardTitle>Your weight today</CardTitle>
                 <CardDescription>Your weight is {weight.toFixed(2)} kg.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-1 flex-col">
+            <CardContent className="flex flex-1 flex-col justify-center">
                 <div className="flex items-center justify-center gap-4">
                     <Button
                         variant="outline"

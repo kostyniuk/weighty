@@ -24,7 +24,7 @@ export function CardsTotalKcalToday({
     const totalKcal = burnedKcal + distanceKcal
 
     return (
-        <Card className="h-full gap-5 w-60 h-60 border-2 border-primary hover:bg-primary/15 transition-all duration-300">
+        <Card className="h-full gap-5 border-2 border-primary hover:bg-primary/15 transition-all duration-300">
             <CardHeader>
                 <CardTitle>Total kcal today</CardTitle>
                 <CardDescription>
@@ -32,7 +32,7 @@ export function CardsTotalKcalToday({
                     {distanceKcal > 0 && `+ ${distanceKcal.toFixed(0)} kcal from ${distanceKm.toFixed(1)} km`}
                 </CardDescription>
             </CardHeader>
-            <CardContent className="flex items-center justify-center">
+            <CardContent className="flex flex-1 items-center justify-center pb-12">
                 <div className="text-center">
                     <div className="text-4xl font-bold tracking-tighter tabular-nums">
                         <p>{totalKcal.toFixed(0)}</p>

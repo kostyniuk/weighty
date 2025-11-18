@@ -62,14 +62,15 @@ export function CardsActivityToday() {
     }
 
     return (
-        <Card className="h-full gap-5 w-90 h-60">
+        <Card className="h-full gap-5">
             <CardHeader>
                 <CardTitle>Distance today</CardTitle>
                 <CardDescription>You covered {distance} km today.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col">
-                <div className="flex flex-row items-center justify-center gap-4">
+            <CardContent className="flex flex-1 flex-col items-center justify-center gap-2">
+                <div className="flex flex-row items-center justify-center gap-4 w-full">
                     <Slider
+                        className="flex-1"
                         value={[distance]}
                         max={20}
                         step={0.1}
@@ -93,7 +94,7 @@ export function CardsActivityToday() {
                         </div>
                     </div>
                 </div>
-                <CardDescription className="flex flex-row items-center gap-1">
+                <CardDescription className="flex flex-row items-center justify-center gap-1 text-center w-full">
                     That's about
                     <div className="text-lg font-bold tracking-tighter text-primary">
                         {Math.round(distance * 50)}
@@ -102,7 +103,7 @@ export function CardsActivityToday() {
                 </CardDescription>
             </CardContent>
             <CardFooter>
-                <Button variant="default">
+                <Button variant="default" className="w-full">
                     Submit
                 </Button>
             </CardFooter>

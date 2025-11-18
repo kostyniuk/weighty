@@ -78,12 +78,12 @@ export function CardsBurnedToday() {
     }
 
     return (
-        <Card className="h-full gap-5 w-60 h-60">
+        <Card className="h-full gap-5">
             <CardHeader>
                 <CardTitle>Burned today</CardTitle>
                 <CardDescription>You burned {goal} kcal today.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-1 flex-col">
+            <CardContent className="flex flex-1 flex-col justify-center">
                 <div className="flex items-center justify-center gap-4">
                     <Button
                         variant="outline"
