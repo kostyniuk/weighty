@@ -57,7 +57,6 @@ export default async function Home() {
           <div className="lg:col-span-2">
             <CardsProgress />
           </div>
-          Placeholder for future widgets or another chart
           <div className="rounded-xl border bg-card text-card-foreground shadow-sm p-6 flex flex-col items-center justify-center min-h-[300px] lg:col-span-1 gap-2">
             <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
               <span className="text-2xl">✨</span>
