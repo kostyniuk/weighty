@@ -6,30 +6,30 @@ import { CardsTotalKcalToday } from "@/components/ui/cards/total-kcal-today";
 import { UserSkeleton } from "@/components/ui/custom/user-skeleton";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
-import { fetchDistanceHistory, fetchUsers, fetchWeightHistory } from "./lib/data";
+import { fetchDistanceHistory, fetchUser, fetchWeightHistory } from "./lib/data";
 import { fetchBurnedHistory } from "./lib/data";
 import { Suspense } from "react";
+import { cacheLife } from "next/cache";
 
 async function Greeting() {
-  const usersResult = await fetchUsers();
+  'use cache';
+  cacheLife('minutes');
+  const usersResult = await fetchUser();
   return <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-    Hi, {usersResult[0]?.name} 👋
+    Hi, {usersResult?.name} 👋
   </h1>
 }
 
-
-
 export default async function Home() {
-  // 'use cache';
-  // const [weightHistoryResult, burnedHistoryResult, distanceHistoryResult] = await Promise.all([
-  //   fetchWeightHistory(),
-  //   fetchBurnedHistory(),
-  //   fetchDistanceHistory(),
-  // ]);
+  const [weightHistoryResult, burnedHistoryResult, distanceHistoryResult] = await Promise.all([
+    fetchWeightHistory(),
+    fetchBurnedHistory(),
+    fetchDistanceHistory(),
+  ]);
 
-  // console.log("weightHistoryResult", weightHistoryResult);
-  // console.log("burnedHistoryResult", burnedHistoryResult);
-  // console.log("distanceHistoryResult", distanceHistoryResult);
+  console.log("weightHistoryResult", weightHistoryResult);
+  console.log("burnedHistoryResult", burnedHistoryResult);
+  console.log("distanceHistoryResult", distanceHistoryResult);
 
   return (
     <div className="min-h-screen bg-zinc-50/50 dark:bg-zinc-950 p-6 md:p-10">
@@ -38,6 +38,9 @@ export default async function Home() {
           <Suspense fallback={<UserSkeleton />}>
             <Greeting />
           </Suspense>
+          <p>{weightHistoryResult[0]?.weight}</p>
+          <p>{burnedHistoryResult[0]?.burned}</p>
+          <p>{distanceHistoryResult[0]?.distance}</p>
           <p className="text-zinc-500 dark:text-zinc-400">
             Here is your daily activity summary.
           </p>
@@ -54,7 +57,7 @@ export default async function Home() {
           <div className="lg:col-span-2">
             <CardsProgress />
           </div>
-          {/* Placeholder for future widgets or another chart */}
+          Placeholder for future widgets or another chart
           <div className="rounded-xl border bg-card text-card-foreground shadow-sm p-6 flex flex-col items-center justify-center min-h-[300px] lg:col-span-1 gap-2">
             <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
               <span className="text-2xl">✨</span>

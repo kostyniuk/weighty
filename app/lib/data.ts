@@ -3,13 +3,14 @@ import { burnedHistory, distanceHistory, users, weightHistory } from "@/lib/sche
 import { eq } from "drizzle-orm";
 import { setTimeout } from "timers/promises";
 
-export const fetchUsers = async () => {
+
+export const fetchUser = async () => {
     await setTimeout(5000);
-    const usersResult = await db.select().from(users);
-    return usersResult;
+    return (await db.select().from(users))[0];
 }
 
 export const fetchWeightHistory = async () => {
+    "use cache";
     await setTimeout(2000);
     const userId = 1;
     const weightHistoryResult = await db.select().from(weightHistory).where(eq(weightHistory.userId, userId));
@@ -17,12 +18,14 @@ export const fetchWeightHistory = async () => {
 }
 
 export const fetchDistanceHistory = async () => {
+    "use cache";
     const userId = 1;
     const distanceHistoryResult = await db.select().from(distanceHistory).where(eq(distanceHistory.userId, userId));
     return distanceHistoryResult;
 }
 
 export const fetchBurnedHistory = async () => {
+    "use cache";
     const userId = 1;
     const burnedHistoryResult = await db.select().from(burnedHistory).where(eq(burnedHistory.userId, userId));
     return burnedHistoryResult;
