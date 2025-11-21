@@ -5,13 +5,13 @@ import { setTimeout } from "timers/promises";
 
 
 export const fetchUser = async () => {
-    await setTimeout(5000);
+    await setTimeout(1000);
     return (await db.select().from(users))[0];
 }
 
 export const fetchWeightHistory = async () => {
     "use cache";
-    await setTimeout(2000);
+    //await setTimeout(2000);
     const userId = 1;
     const weightHistoryResult = await db.select().from(weightHistory).where(eq(weightHistory.userId, userId));
     return weightHistoryResult;

@@ -13,7 +13,7 @@ import { cacheLife } from "next/cache";
 
 async function Greeting() {
   'use cache';
-  cacheLife('minutes');
+  cacheLife('seconds');
   const usersResult = await fetchUser();
   return <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
     Hi, {usersResult?.name} 👋
