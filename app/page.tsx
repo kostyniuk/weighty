@@ -12,8 +12,8 @@ import { Suspense } from "react";
 import { cacheLife } from "next/cache";
 
 async function Greeting() {
-  'use cache';
-  cacheLife('seconds');
+  // 'use cache';
+  // cacheLife('seconds');
   const usersResult = await fetchUser();
   return <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
     Hi, {usersResult?.name} 👋
@@ -35,7 +35,7 @@ export default async function Home() {
     <div className="min-h-screen bg-zinc-50/50 dark:bg-zinc-950 p-6 md:p-10">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2">
-          <Suspense fallback={<UserSkeleton />}>
+          <Suspense fallback={<UserSkeleton className="animate-pulse p-20" />}>
             <Greeting />
           </Suspense>
           <p>{weightHistoryResult[0]?.weight}</p>
