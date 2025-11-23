@@ -2,10 +2,17 @@ import { db } from "@/lib/db";
 import { burnedHistory, distanceHistory, users, weightHistory } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { setTimeout } from "timers/promises";
+import { cacheLife } from "next/cache";
 
 
 export const fetchUser = async () => {
-    await setTimeout(1000);
+    "use cache";
+    cacheLife({
+        stale: 1,
+        revalidate: 1,
+        expire: 1,
+    });
+    await setTimeout(5000);
     return (await db.select().from(users))[0];
 }
 

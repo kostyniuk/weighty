@@ -7,11 +7,10 @@ import { UserSkeleton } from "@/components/ui/custom/user-skeleton";
 import { fetchDistanceHistory, fetchUser, fetchWeightHistory } from "./lib/data";
 import { fetchBurnedHistory } from "./lib/data";
 import { Suspense } from "react";
-import { cacheLife } from "next/cache";
+import { connection } from "next/server";
 
 async function Greeting() {
-  // 'use cache';
-  // cacheLife('seconds');
+  await connection();
   const usersResult = await fetchUser();
   return <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
     Hi, {usersResult?.name} 👋
