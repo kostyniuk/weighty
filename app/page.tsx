@@ -4,8 +4,6 @@ import { CardsWeightToday } from "@/components/ui/cards/weight-today";
 import { CardsProgress } from "@/components/ui/cards/progress";
 import { CardsTotalKcalToday } from "@/components/ui/cards/total-kcal-today";
 import { UserSkeleton } from "@/components/ui/custom/user-skeleton";
-import { db } from "@/lib/db";
-import { users } from "@/lib/schema";
 import { fetchDistanceHistory, fetchUser, fetchWeightHistory } from "./lib/data";
 import { fetchBurnedHistory } from "./lib/data";
 import { Suspense } from "react";
